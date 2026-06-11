@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import GettingStarted from './pages/GettingStarted';
+import Authentication from './pages/Authentication';
+import ApiKeys from './pages/ApiKeys';
+import Installments from './pages/Installments';
+import Applications from './pages/Applications';
+import Dashboard from './pages/Dashboard';
+import Scopes from './pages/Scopes';
+import Security from './pages/Security';
+import Examples from './pages/Examples';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="getting-started" element={<GettingStarted />} />
+        <Route path="authentication" element={<Authentication />} />
+        <Route path="api-keys" element={<ApiKeys />} />
+        <Route path="installments" element={<Installments />} />
+        <Route path="applications" element={<Applications />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="scopes" element={<Scopes />} />
+        <Route path="security" element={<Security />} />
+        <Route path="examples" element={<Examples />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

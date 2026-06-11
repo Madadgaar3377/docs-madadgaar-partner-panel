@@ -1,3 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
+# Madadgaar Partner API Documentation
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://docs.madadgaar.com.pk/sitemap.xml

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://docs.madadgaar.com.pk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/getting-started</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/authentication</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/api-keys</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/installments</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/applications</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/dashboard</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/scopes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/security</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://docs.madadgaar.com.pk/examples</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+</urlset>
