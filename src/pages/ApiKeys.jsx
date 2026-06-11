@@ -29,11 +29,11 @@ export default function ApiKeysPage() {
         <p>
           Production keys use the prefix <code>mg_live_</code>. The full secret is shown once in the panel,
           included in the confirmation email, and stored in MongoDB as a bcrypt hash only. List endpoints
-          return metadata (name, prefix, scopes, last used) — never the secret.
+          return metadata (name, prefix, scopes, last used)  never the secret.
         </p>
         <p>
           Each key is linked to <code>partnerId</code>. Maximum 10 active keys per partner. Revoking a key
-          is immediate — in-flight requests may complete but new requests fail.
+          is immediate  in-flight requests may complete but new requests fail.
         </p>
 
         <h2>Endpoints</h2>
@@ -98,7 +98,7 @@ export default function ApiKeysPage() {
       <EndpointCard
         method="PATCH"
         path={`${KEYS_BASE}/:keyId`}
-        description="Update key name, scopes, or expiry. Cannot update revoked keys. Cannot retrieve the secret — only metadata changes."
+        description="Update key name, scopes, or expiry. Cannot update revoked keys. Cannot retrieve the secret  only metadata changes."
         body={`{
   "name": "Renamed Production Key",
   "scopes": ["installments:read", "dashboard:read", "profile:read"]
@@ -117,7 +117,7 @@ export default function ApiKeysPage() {
       <EndpointCard
         method="DELETE"
         path={`${KEYS_BASE}/:keyId`}
-        description="Revoke a key permanently. Sends a revocation email. Revoked keys cannot be reactivated — create a new key instead."
+        description="Revoke a key permanently. Sends a revocation email. Revoked keys cannot be reactivated  create a new key instead."
         curl={`curl -s -X DELETE "${KEYS_BASE}/key_abc123" \\
   -H "Authorization: Bearer $PARTNER_JWT"`}
         test={{ method: 'DELETE', url: `${KEYS_BASE}/key_abc123`, headers: { Authorization: 'Bearer YOUR_PARTNER_JWT' } }}
@@ -128,7 +128,7 @@ export default function ApiKeysPage() {
         <p>
           When a key is created, Madadgaar emails the partner with the full API key, .env example,
           scope list, and links to documentation. When revoked, a security alert email is sent.
-          Keep these emails secure — they contain credentials.
+          Keep these emails secure  they contain credentials.
         </p>
       </div>
     </>

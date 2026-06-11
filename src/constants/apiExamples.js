@@ -54,7 +54,7 @@ export const COMPLETE_CREATE_INSTALLMENT = {
       otherChargesNote: 'Processing fee included in markup',
       finance: {
         bankName: 'Partner Islamic Finance',
-        financeInfo: 'Shariah-compliant plan — no hidden charges',
+        financeInfo: 'Shariah-compliant plan  no hidden charges',
       },
     },
     {
@@ -81,7 +81,7 @@ export const COMPLETE_CREATE_INSTALLMENT = {
       status: 'active',
       paymentPlans: [
         {
-          planName: '128GB — 6 Month',
+          planName: '128GB  6 Month',
           cashPrice: 79999,
           installmentPrice: 79999,
           downPayment: 8000,
@@ -110,27 +110,27 @@ export const COMPLETE_CREATE_INSTALLMENT = {
 export const INSTALLMENT_FIELD_REFERENCE = [
   { field: 'productName', type: 'string', required: true, description: 'Display name of the product on Madadgaar and partner sites.' },
   { field: 'category', type: 'string', required: true, description: 'Product category slug, e.g. smartphones, laptops, appliances.' },
-  { field: 'customCategory', type: 'string', required: false, description: 'Use when category is "other" — your custom category label.' },
+  { field: 'customCategory', type: 'string', required: false, description: 'Use when category is "other"  your custom category label.' },
   { field: 'city', type: 'string', required: true, description: 'City where product is available (Karachi, Lahore, etc.).' },
   { field: 'price', type: 'number', required: true, description: 'Base cash price. Can be 0 if all pricing is in variants only.' },
-  { field: 'description', type: 'string', required: false, description: 'Long product description — warranty, condition, box contents.' },
+  { field: 'description', type: 'string', required: false, description: 'Long product description  warranty, condition, box contents.' },
   { field: 'productImages', type: 'string[]', required: false, description: 'Array of HTTPS image URLs (upload images via partner panel upload API first).' },
   { field: 'videoUrl', type: 'string', required: false, description: 'Optional YouTube or product video URL.' },
   { field: 'companyName', type: 'string', required: false, description: 'Your company display name on the listing.' },
   { field: 'postedBy', type: 'string', required: false, description: 'Set to "Partner" for partner-created listings.' },
-  { field: 'status', type: 'string', required: false, description: 'Defaults to pending — admin approves before public catalog shows product.' },
+  { field: 'status', type: 'string', required: false, description: 'Defaults to pending  admin approves before public catalog shows product.' },
   { field: 'downpayment', type: 'number', required: false, description: 'Legacy global down payment field (optional if plans define downPayment).' },
   { field: 'tenure', type: 'string', required: false, description: 'Human tenure label for simple listings.' },
   { field: 'productSpecifications', type: 'object', required: false, description: 'Category specs: { category, subCategory, specifications: [{ field, value }] }.' },
   { field: 'paymentPlans', type: 'array', required: false, description: 'Payment plans on the base product (not tied to a variant). See plan fields below.' },
-  { field: 'variants', type: 'array', required: false, description: 'RAM/storage/color options — each variant has price, discountPercent, and optional paymentPlans.' },
-  { field: 'finance', type: 'object', required: false, description: 'Product-level finance: { bankName, financeInfo } — bank partnership info.' },
+  { field: 'variants', type: 'array', required: false, description: 'RAM/storage/color options  each variant has price, discountPercent, and optional paymentPlans.' },
+  { field: 'finance', type: 'object', required: false, description: 'Product-level finance: { bankName, financeInfo }  bank partnership info.' },
 ];
 
 export const PAYMENT_PLAN_FIELDS = [
   { field: 'planName', type: 'string', required: true, description: 'Label shown to customers, e.g. "12 Month Plan".' },
   { field: 'cashPrice', type: 'number', required: false, description: 'Cash price this plan is based on.' },
-  { field: 'installmentPrice', type: 'number', required: true, description: 'Total deal / installment price — must be > 0.' },
+  { field: 'installmentPrice', type: 'number', required: true, description: 'Total deal / installment price  must be > 0.' },
   { field: 'downPayment', type: 'number', required: false, description: 'Upfront amount customer pays.' },
   { field: 'monthlyInstallment', type: 'number', required: false, description: 'Monthly payment amount.' },
   { field: 'tenureMonths', type: 'number', required: false, description: 'Number of months (e.g. 6, 12, 24).' },
@@ -146,7 +146,7 @@ export const CODE_EXAMPLES = [
   {
     id: 'test-me',
     category: 'general',
-    title: 'Test API key — GET /me',
+    title: 'Test API key  GET /me',
     description: 'First call after creating your key. Confirms the secret works and returns your partnerId.',
     language: 'bash',
     code: `curl -s "${PARTNER_V1}/me" \\
@@ -157,7 +157,7 @@ export const CODE_EXAMPLES = [
     id: 'list-installments',
     category: 'installments',
     title: 'List installment products',
-    description: 'Paginated list — same data as partner panel "View All Plans".',
+    description: 'Paginated list  same data as partner panel "View All Plans".',
     language: 'bash',
     code: `curl -s "${PARTNER_V1}/installments?page=1&limit=20" \\
   -H "X-API-Key: $MADADGAAR_API_KEY"`,
@@ -166,7 +166,7 @@ export const CODE_EXAMPLES = [
   {
     id: 'create-installment-full',
     category: 'installments',
-    title: 'Create installment — complete payload',
+    title: 'Create installment  complete payload',
     description: 'Full example with variants, finance, productSpecifications, and multiple payment plans.',
     language: 'bash',
     getCode() {
@@ -251,7 +251,7 @@ export const CODE_EXAMPLES = [
     id: 'update-application',
     category: 'applications',
     title: 'Approve application',
-    description: 'Update status — customer receives email notification.',
+    description: 'Update status  customer receives email notification.',
     language: 'bash',
     code: `curl -s -X PATCH "${PARTNER_V1}/applications/APP_ID/status" \\
   -H "Authorization: Bearer $MADADGAAR_API_KEY" \\
@@ -277,7 +277,7 @@ export const CODE_EXAMPLES = [
     id: 'create-api-key',
     category: 'api-keys',
     title: 'Create API key (JWT required)',
-    description: 'Use partner JWT from login — NOT an API key. For panel automation only.',
+    description: 'Use partner JWT from login  NOT an API key. For panel automation only.',
     language: 'bash',
     code: `curl -s -X POST "${KEYS_BASE}" \\
   -H "Authorization: Bearer $PARTNER_JWT" \\

@@ -18,7 +18,7 @@ export default function DashboardPage() {
       />
 
       <div className="doc-prose">
-        <h2>GET /me — health check</h2>
+        <h2>GET /me  health check</h2>
         <p>
           The <code>/me</code> endpoint is the recommended first call after creating a key. It confirms
           the secret is valid, the partner account is active, and returns metadata about the key itself.
@@ -53,7 +53,7 @@ export default function DashboardPage() {
       />
 
       <div className="doc-prose">
-        <h2>GET /dashboard — partner statistics</h2>
+        <h2>GET /dashboard  partner statistics</h2>
         <p>
           Returns the same statistics shown on the partner panel dashboard: total installments (owned vs
           contributed), installment request count, properties, loans, and recent activity snippets.
@@ -65,7 +65,7 @@ export default function DashboardPage() {
         method="GET"
         path={`${PARTNER_V1}/dashboard`}
         scope="dashboard:read"
-        description="Partner dashboard stats — installments, requests, properties, loans."
+        description="Partner dashboard stats  installments, requests, properties, loans."
         curl={`curl -s "${PARTNER_V1}/dashboard" \\
   -H "X-API-Key: $MADADGAAR_API_KEY"`}
         test={{ method: 'GET', url: `${PARTNER_V1}/dashboard` }}

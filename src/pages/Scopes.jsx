@@ -9,7 +9,7 @@ const SCOPES = [
   { id: 'applications:write', desc: 'Approve, reject, or update application status.', endpoints: 'PATCH /applications/:id/status' },
   { id: 'dashboard:read', desc: 'Fetch dashboard statistics (counts, recent items).', endpoints: 'GET /dashboard' },
   { id: 'profile:read', desc: 'Include full partner profile in GET /me response. Always added on new keys.', endpoints: 'GET /me (extended fields)' },
-  { id: '*', desc: 'Full access to all partner scopes. Admin-granted only — cannot combine with other scopes.', endpoints: 'All integration routes' },
+  { id: '*', desc: 'Full access to all partner scopes. Admin-granted only  cannot combine with other scopes.', endpoints: 'All integration routes' },
 ];
 
 export default function Scopes() {
@@ -31,7 +31,7 @@ export default function Scopes() {
         <p>
           Scopes follow the pattern <code>resource:action</code>. Read scopes allow GET requests;
           write scopes allow POST, PUT, PATCH, DELETE. This mirrors industry practice (GitHub, Stripe)
-          and lets you issue a read-only key for a reporting server and a write key for your ERP —
+          and lets you issue a read-only key for a reporting server and a write key for your ERP 
           limiting blast radius if one leaks.
         </p>
 

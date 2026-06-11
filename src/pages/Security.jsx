@@ -24,9 +24,9 @@ export default function Security() {
           <code>mg_live_</code> token, returns it once, emails it to the partner, and stores only:
         </p>
         <ul>
-          <li><code>keyPrefix</code> — first 12 characters for indexed lookup</li>
-          <li><code>keyHash</code> — bcrypt (12 rounds) of the full secret</li>
-          <li>Metadata — name, scopes, partnerId, status, expiry, lastUsedAt</li>
+          <li><code>keyPrefix</code>  first 12 characters for indexed lookup</li>
+          <li><code>keyHash</code>  bcrypt (12 rounds) of the full secret</li>
+          <li>Metadata  name, scopes, partnerId, status, expiry, lastUsedAt</li>
         </ul>
         <p>Verification uses constant-time bcrypt comparison. Revoked keys fail immediately.</p>
 
@@ -48,7 +48,7 @@ export default function Security() {
         <h2>Ownership enforcement</h2>
         <p>
           Every write operation checks that resources belong to the <code>partnerId</code> from the API key.
-          The server overwrites <code>userId</code> in create payloads — spoofing another partner is ignored.
+          The server overwrites <code>userId</code> in create payloads  spoofing another partner is ignored.
           Application and installment reads filter by <code>createdBy</code> / plan ownership.
         </p>
 

@@ -27,13 +27,13 @@ export default function Authentication() {
           splits them by URL path.
         </p>
 
-        <h2>Mode A — Partner JWT (browser / key management only)</h2>
+        <h2>Mode A  Partner JWT (browser / key management only)</h2>
         <p>
           Obtain a JWT by logging in through <code>POST {API_BASE}/login</code> with partner credentials.
           Send it as <code>Authorization: Bearer &lt;jwt&gt;</code> only to:
         </p>
         <ul>
-          <li><code>{KEYS_BASE}</code> — create, list, update, revoke keys</li>
+          <li><code>{KEYS_BASE}</code>  create, list, update, revoke keys</li>
           <li>Legacy partner panel endpoints (dashboard, profile) when using the panel UI</li>
         </ul>
         <Callout variant="warning" title="Never use JWT for integration">
@@ -41,7 +41,7 @@ export default function Authentication() {
           ERP connectors, or customer-facing websites. Use API keys for all server-to-server work.
         </Callout>
 
-        <h2>Mode B — API key (integration)</h2>
+        <h2>Mode B  API key (integration)</h2>
         <p>
           API keys start with <code>mg_live_</code> followed by a cryptographically random string.
           They are created in the partner panel or via the keys API, hashed with bcrypt in the database,
@@ -52,7 +52,7 @@ export default function Authentication() {
 X-API-Key: mg_live_xxxxxxxx`}</CodeBlock>
         <p>
           The middleware inspects the token: if it starts with <code>mg_live_</code> (or future <code>mg_test_</code>),
-          it is treated as an API key. Otherwise a Bearer token is assumed to be a JWT and routed to user auth —
+          it is treated as an API key. Otherwise a Bearer token is assumed to be a JWT and routed to user auth 
           which will fail on integration paths.
         </p>
 
@@ -62,7 +62,7 @@ X-API-Key: mg_live_xxxxxxxx`}</CodeBlock>
           <li>Read first 12 characters as <code>keyPrefix</code> for database lookup.</li>
           <li>Compare full secret against bcrypt hash (timing-safe).</li>
           <li>Check key status is <code>active</code> and not past <code>expiresAt</code>.</li>
-          <li>Load partner user — must be verified, active, not blocked.</li>
+          <li>Load partner user  must be verified, active, not blocked.</li>
           <li>Attach <code>partnerId</code> and scopes to the request context.</li>
           <li>Check route-required scope (e.g. <code>installments:write</code>).</li>
           <li>Update <code>lastUsedAt</code> for audit.</li>
@@ -71,15 +71,15 @@ X-API-Key: mg_live_xxxxxxxx`}</CodeBlock>
         <h2>Identity resolution</h2>
         <p>
           Every integration request resolves to <code>partnerId</code> (= <code>User.userId</code>).
-          Controllers use this ID for ownership checks — you cannot create products for another partner
+          Controllers use this ID for ownership checks  you cannot create products for another partner
           even if you tamper with <code>userId</code> in the JSON body; the server overwrites it from the key.
         </p>
 
         <h2>Common errors</h2>
         <ul>
-          <li><strong>401 Invalid or expired API key</strong> — wrong secret, revoked key, or expired key.</li>
-          <li><strong>403 Insufficient scope</strong> — key lacks permission for this endpoint.</li>
-          <li><strong>403 Partner account not allowed</strong> — unverified or blocked partner.</li>
+          <li><strong>401 Invalid or expired API key</strong>  wrong secret, revoked key, or expired key.</li>
+          <li><strong>403 Insufficient scope</strong>  key lacks permission for this endpoint.</li>
+          <li><strong>403 Partner account not allowed</strong>  unverified or blocked partner.</li>
         </ul>
       </div>
     </>

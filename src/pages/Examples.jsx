@@ -127,7 +127,7 @@ if __name__ == "__main__":
         <CodeBlock title="response handling" showTest={false}>{`// Always check success field
 if (!response.success) {
   if (response.message?.includes('scope')) {
-    // Key missing permission — update scopes or use different key
+    // Key missing permission  update scopes or use different key
   }
   if (response.message?.includes('Invalid or expired')) {
     // Rotate key

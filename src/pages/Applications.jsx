@@ -30,7 +30,7 @@ export default function Applications() {
           When a customer applies for an installment on Madadgaar, the application record stores{' '}
           <code>createdBy</code> as the partner <code>userId</code> who receives the lead. The selected
           payment plan&apos;s <code>partnerId</code> determines routing. Your integration should only
-          see applications where you are the assigned partner — ownership checks prevent cross-partner access.
+          see applications where you are the assigned partner  ownership checks prevent cross-partner access.
         </p>
 
         <h2>Typical CRM workflow</h2>

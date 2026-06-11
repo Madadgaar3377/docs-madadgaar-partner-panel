@@ -17,11 +17,11 @@ export default function GettingStarted() {
       <PageHero
         badge="Beginner friendly"
         title="Getting Started"
-        subtitle="Follow these steps in order. Each step explains what you are doing and why — not just commands to copy. Most partners complete setup in under 30 minutes."
+        subtitle="Follow these steps in order. Each step explains what you are doing and why  not just commands to copy. Most partners complete setup in under 30 minutes."
       />
 
       <div className="doc-prose">
-        <Callout variant="info" title="Before you begin — checklist">
+        <Callout variant="info" title="Before you begin  checklist">
           Make sure all items below are true. If any is missing, the API will return errors and this guide cannot fix it until your account is ready.
           <ul className="mt-2 mb-0">
             <li>You have a <strong>partner account</strong> on Madadgaar (not a regular customer account)</li>
@@ -36,7 +36,7 @@ export default function GettingStarted() {
         steps={[
           {
             title: 'Log into the partner panel',
-            description: 'Open the partner portal in your browser and sign in with your partner email and password. This creates a temporary JWT token in your browser — think of it as your "logged in" session.',
+            description: 'Open the partner portal in your browser and sign in with your partner email and password. This creates a temporary JWT token in your browser  think of it as your "logged in" session.',
             detail: 'Your integration server will NOT use this JWT long-term. You only need it now to generate an API key, or you can generate the key directly in Settings → API Keys without reading any code.',
             children: (
               <a href={PARTNER_PANEL} target="_blank" rel="noreferrer" className="inline-block mt-2 text-sm font-semibold text-madad-600 hover:text-madad-700">
@@ -46,12 +46,12 @@ export default function GettingStarted() {
           },
           {
             title: 'Generate your API key',
-            description: 'Go to Settings → API Keys → click "Generate Key". Give it a clear name like "Production Website" or "ERP Sync". Select which permissions (scopes) this key needs — if unsure, enable read + write for installments.',
+            description: 'Go to Settings → API Keys → click "Generate Key". Give it a clear name like "Production Website" or "ERP Sync". Select which permissions (scopes) this key needs  if unsure, enable read + write for installments.',
             detail: 'When you click Generate, the full secret appears once on screen AND is sent to your registered email. Save both copies. The email is your long-term backup if you lose the key from the screen.',
           },
           {
             title: 'Save the key on your server',
-            description: 'Copy the key that starts with mg_live_ and store it in an environment variable on a server you control — not on your laptop\'s desktop, not in WhatsApp, not in GitHub.',
+            description: 'Copy the key that starts with mg_live_ and store it in an environment variable on a server you control  not on your laptop\'s desktop, not in WhatsApp, not in GitHub.',
             children: (
               <CodeBlock title=".env file on your server">{`MADADGAAR_API_KEY=mg_live_paste_your_key_here
 MADADGAAR_API_BASE=${PARTNER_V1}`}</CodeBlock>
@@ -86,16 +86,16 @@ MADADGAAR_API_BASE=${PARTNER_V1}`}</CodeBlock>
         <h2>Understanding the response</h2>
         <p>
           Every Madadgaar API response is JSON with a <code>success</code> field. When <code>success: true</code>,
-          read the <code>data</code> field for results. When <code>success: false</code>, read <code>message</code> —
+          read the <code>data</code> field for results. When <code>success: false</code>, read <code>message</code> 
           it tells you exactly what went wrong (wrong key, missing scope, unverified account, etc.).
         </p>
 
         <h2>Common first-time mistakes</h2>
         <ul>
-          <li><strong>Using API key on /keys endpoints</strong> — key management needs JWT from login, not API key.</li>
-          <li><strong>Putting key in frontend JavaScript</strong> — anyone can steal it from browser dev tools.</li>
-          <li><strong>Partner not admin-verified</strong> — complete profile and wait for Madadgaar approval first.</li>
-          <li><strong>Missing write scope</strong> — create/update needs <code>installments:write</code> on the key.</li>
+          <li><strong>Using API key on /keys endpoints</strong>  key management needs JWT from login, not API key.</li>
+          <li><strong>Putting key in frontend JavaScript</strong>  anyone can steal it from browser dev tools.</li>
+          <li><strong>Partner not admin-verified</strong>  complete profile and wait for Madadgaar approval first.</li>
+          <li><strong>Missing write scope</strong>  create/update needs <code>installments:write</code> on the key.</li>
         </ul>
 
         <Callout variant="success" title="You are ready!">

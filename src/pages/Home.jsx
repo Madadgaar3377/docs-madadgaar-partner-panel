@@ -19,7 +19,7 @@ export default function Home() {
           Partner API <span className="text-madad-600">Documentation</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-          Everything you need to connect your business systems to Madadgaar — explained step by step,
+          Everything you need to connect your business systems to Madadgaar  explained step by step,
           with copy-paste examples. No black-box magic: same rules as the partner panel, built for your servers.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
@@ -36,7 +36,7 @@ export default function Home() {
         <Callout variant="learn" title="Who should read this?">
           <strong>Verified Madadgaar partners</strong> who want to automate work: sync products to their website,
           pull customer applications into a CRM, update listings from an ERP, or build a custom admin tool.
-          If you only use the partner panel in a browser, you do not need the API — but if you have developers
+          If you only use the partner panel in a browser, you do not need the API  but if you have developers
           on your team, this documentation will save weeks of guesswork.
         </Callout>
 
@@ -49,16 +49,16 @@ export default function Home() {
         <p>
           The Partner API gives your <strong>server</strong> a secure key (<code>mg_live_...</code>) that acts on
           behalf of your partner account. Your code calls REST endpoints; Madadgaar responds with JSON. The same
-          validation, ownership rules, and admin approval flows apply — you are not bypassing anything, you are
+          validation, ownership rules, and admin approval flows apply  you are not bypassing anything, you are
           automating the same actions you already perform manually.
         </p>
 
-        <h2>How it works — simple picture</h2>
+        <h2>How it works  simple picture</h2>
         <div className="grid sm:grid-cols-3 gap-4 my-8 not-prose">
           {[
             { icon: Key, title: '1. Get API key', desc: 'Generate in partner panel Settings → API Keys. Key is emailed to you for safekeeping.', to: '/api-keys' },
             { icon: Server, title: '2. Store on server', desc: 'Put key in .env on your backend. Never in website JavaScript or mobile apps.', to: '/security' },
-            { icon: Layers, title: '3. Call endpoints', desc: 'List products, create listings, check applications — from your own systems.', to: '/installments' },
+            { icon: Layers, title: '3. Call endpoints', desc: 'List products, create listings, check applications  from your own systems.', to: '/installments' },
           ].map((card) => {
             const Icon = card.icon;
             return (
@@ -73,7 +73,7 @@ export default function Home() {
           })}
         </div>
 
-        <h2>Two types of URLs — important!</h2>
+        <h2>Two types of URLs  important!</h2>
         <p>
           Madadgaar uses <strong>two separate URL groups</strong>. Mixing them causes errors. Think of it like:
           one key opens the office (JWT login), another key opens the warehouse (API key).
@@ -89,18 +89,18 @@ export default function Home() {
               </tr>
             </thead>
             <tbody className="divide-y divide-red-50">
-              <tr className="bg-white"><td className="p-3 font-semibold">A — Keys</td><td className="p-3 font-mono text-xs">/api/v1/partner/keys</td><td className="p-3">Partner JWT</td><td className="p-3 text-gray-600">Create & revoke API keys only</td></tr>
-              <tr className="bg-white"><td className="p-3 font-semibold">B — Integration</td><td className="p-3 font-mono text-xs">{PARTNER_V1}</td><td className="p-3">API key</td><td className="p-3 text-gray-600">Installments, dashboard, applications</td></tr>
+              <tr className="bg-white"><td className="p-3 font-semibold">A  Keys</td><td className="p-3 font-mono text-xs">/api/v1/partner/keys</td><td className="p-3">Partner JWT</td><td className="p-3 text-gray-600">Create & revoke API keys only</td></tr>
+              <tr className="bg-white"><td className="p-3 font-semibold">B  Integration</td><td className="p-3 font-mono text-xs">{PARTNER_V1}</td><td className="p-3">API key</td><td className="p-3 text-gray-600">Installments, dashboard, applications</td></tr>
             </tbody>
           </table>
         </div>
 
         <h2>What you can do today</h2>
         <ul>
-          <li><strong>API keys</strong> — create, list, revoke, email confirmation with full key</li>
-          <li><strong>Installments</strong> — full create, read, update, delete (same as partner panel)</li>
-          <li><strong>Dashboard</strong> — stats and <code>GET /me</code> health check</li>
-          <li><strong>Applications</strong> — documented; confirm enablement with Madadgaar support</li>
+          <li><strong>API keys</strong>  create, list, revoke, email confirmation with full key</li>
+          <li><strong>Installments</strong>  full create, read, update, delete (same as partner panel)</li>
+          <li><strong>Dashboard</strong>  stats and <code>GET /me</code> health check</li>
+          <li><strong>Applications</strong>  documented; confirm enablement with Madadgaar support</li>
         </ul>
 
         <div className="grid sm:grid-cols-2 gap-4 my-8 not-prose">
@@ -115,13 +115,13 @@ export default function Home() {
             <Mail className="w-5 h-5 text-madad-600 shrink-0 mt-0.5" />
             <div>
               <p className="font-semibold text-gray-900 text-sm">Key sent by email</p>
-              <p className="text-xs text-gray-500 mt-1">Full API key emailed when generated — save for lifetime reference.</p>
+              <p className="text-xs text-gray-500 mt-1">Full API key emailed when generated  save for lifetime reference.</p>
             </div>
           </div>
         </div>
 
         <Callout variant="tip" title="New to APIs?">
-          Start with <Link to="/getting-started">Getting Started</Link> — we walk you through every click and command.
+          Start with <Link to="/getting-started">Getting Started</Link>  we walk you through every click and command.
           No prior API experience required; we explain what JWT, scopes, and environment variables mean in plain language.
         </Callout>
       </div>

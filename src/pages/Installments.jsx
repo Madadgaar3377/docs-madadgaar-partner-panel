@@ -38,7 +38,7 @@ export default function Installments() {
       <PageHero
         badge="API key required"
         title="Installments"
-        subtitle="Manage installment products programmatically — including variants, finance key-value pairs, and product specifications. Every curl example has a Test now button."
+        subtitle="Manage installment products programmatically  including variants, finance key-value pairs, and product specifications. Every curl example has a Test now button."
       />
 
       <CategoryFilter categories={INSTALLMENT_SECTIONS} active={section} onChange={setSection} />
@@ -51,8 +51,8 @@ export default function Installments() {
             have payment plans from multiple partners. Your API responses only include <em>your</em> plans.
           </p>
           <ul>
-            <li><strong>Product owner</strong> — you created the listing. You can edit product fields and delete the entire product.</li>
-            <li><strong>Contributor</strong> — you added your own payment plans to someone else&apos;s product. You can only edit/remove your plans, not the core product.</li>
+            <li><strong>Product owner</strong>  you created the listing. You can edit product fields and delete the entire product.</li>
+            <li><strong>Contributor</strong>  you added your own payment plans to someone else&apos;s product. You can only edit/remove your plans, not the core product.</li>
           </ul>
 
           <Callout variant="tip" title="partnerId auto-filled">
@@ -67,20 +67,20 @@ export default function Installments() {
           <h2>How to create an installment product (complete guide)</h2>
           <ol>
             <li>Ensure your API key has <code>installments:write</code> scope.</li>
-            <li>Prepare product images — upload via partner panel first, then use HTTPS URLs in <code>productImages</code>.</li>
+            <li>Prepare product images  upload via partner panel first, then use HTTPS URLs in <code>productImages</code>.</li>
             <li>Set required fields: <code>productName</code>, <code>category</code>, <code>city</code>, <code>price</code>.</li>
             <li>Add at least one <code>paymentPlans[]</code> entry with <code>planName</code> and <code>installmentPrice &gt; 0</code>.</li>
-            <li>Optional: add <code>variants[]</code> for RAM/storage/color — each variant can have its own <code>paymentPlans</code>.</li>
-            <li>Optional: set <code>finance</code> at product level — <code>{'{ bankName, financeInfo }'}</code> for bank partnership details.</li>
+            <li>Optional: add <code>variants[]</code> for RAM/storage/color  each variant can have its own <code>paymentPlans</code>.</li>
+            <li>Optional: set <code>finance</code> at product level  <code>{'{ bankName, financeInfo }'}</code> for bank partnership details.</li>
             <li>Optional: add <code>productSpecifications</code> with dynamic <code>field</code> / <code>value</code> pairs.</li>
-            <li>POST to <code>/installments</code> — response includes <code>installmentPlanId</code> for future updates.</li>
+            <li>POST to <code>/installments</code>  response includes <code>installmentPlanId</code> for future updates.</li>
           </ol>
 
-          <Callout variant="info" title="finance object — key-value structure">
+          <Callout variant="info" title="finance object  key-value structure">
             <code>finance</code> is an object with two string keys:
             <ul className="mt-2 mb-0">
-              <li><code>bankName</code> — e.g. &quot;Partner Islamic Finance&quot;</li>
-              <li><code>financeInfo</code> — free text shown to customers, e.g. &quot;0% markup for 3 months&quot;</li>
+              <li><code>bankName</code>  e.g. &quot;Partner Islamic Finance&quot;</li>
+              <li><code>financeInfo</code>  free text shown to customers, e.g. &quot;0% markup for 3 months&quot;</li>
             </ul>
             You can also set <code>finance</code> inside individual <code>paymentPlans[]</code> for plan-specific bank details.
           </Callout>
@@ -88,7 +88,7 @@ export default function Installments() {
           <h3>Complete request body</h3>
           <p>Samsung Galaxy A55 example with variants, two payment plans, specifications, and finance:</p>
           <CodeBlock
-            title="POST /installments — full JSON body"
+            title="POST /installments  full JSON body"
             language="json"
             test={{ method: 'POST', url: `${PARTNER_V1}/installments`, body: COMPLETE_CREATE_INSTALLMENT }}
           >
@@ -109,8 +109,8 @@ export default function Installments() {
               { field: 'variantName', type: 'string', required: true, description: 'Label e.g. "8GB-256GB Black".' },
               { field: 'price', type: 'number', required: true, description: 'Cash price for this variant.' },
               { field: 'discountPercent', type: 'number', required: false, description: 'Percentage discount off cash price.' },
-              { field: 'status', type: 'string', required: false, description: 'active or inactive — defaults to active.' },
-              { field: 'paymentPlans', type: 'array', required: false, description: 'Variant-specific plans — same structure as product-level paymentPlans.' },
+              { field: 'status', type: 'string', required: false, description: 'active or inactive  defaults to active.' },
+              { field: 'paymentPlans', type: 'array', required: false, description: 'Variant-specific plans  same structure as product-level paymentPlans.' },
             ]}
           />
           <h3>finance object</h3>
