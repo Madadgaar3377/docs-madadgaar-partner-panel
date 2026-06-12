@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Scopes from './pages/Scopes';
 import Security from './pages/Security';
 import Examples from './pages/Examples';
+import Status from './pages/Status';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="scopes" element={<Scopes />} />
         <Route path="security" element={<Security />} />
         <Route path="examples" element={<Examples />} />
+        <Route path="status" element={<Status />} />
       </Route>
     </Routes>
   );

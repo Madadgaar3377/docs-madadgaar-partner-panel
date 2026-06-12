@@ -3,6 +3,7 @@ import PageHero from '../components/PageHero';
 import Callout from '../components/Callout';
 import EndpointCard from '../components/EndpointCard';
 import { KEYS_BASE, PARTNER_PANEL } from '../constants/api';
+import { Link } from 'react-router-dom';
 
 export default function ApiKeysPage() {
   return (
@@ -22,14 +23,18 @@ export default function ApiKeysPage() {
         <Callout variant="info" title="UI alternative">
           Most partners manage keys at{' '}
           <a href={`${PARTNER_PANEL}/settings/api-keys`}>{PARTNER_PANEL}/settings/api-keys</a>.
-          The HTTP API below is for automation or custom internal tools.
+          The HTTP API below is for automation or custom internal tools. See also{' '}
+          <Link to="/status">API Status</Link> for what is live in production.
         </Callout>
 
         <h2>Key format & storage</h2>
         <p>
           Production keys use the prefix <code>mg_live_</code>. The full secret is shown once in the panel,
-          included in the confirmation email, and stored in MongoDB as a bcrypt hash only. List endpoints
-          return metadata (name, prefix, scopes, last used)  never the secret.
+          included in the confirmation email, and stored in MongoDB as a bcrypt hash only. Download the spec:{' '}
+          <a href="https://api.madadgaar.com.pk/api/v1/partner/openapi.json" target="_blank" rel="noreferrer">
+            openapi.json
+          </a>
+          . List endpoints return metadata (name, prefix, scopes, last used) — never the secret.
         </p>
         <p>
           Each key is linked to <code>partnerId</code>. Maximum 10 active keys per partner. Revoking a key

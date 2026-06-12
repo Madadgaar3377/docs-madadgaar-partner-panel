@@ -3,6 +3,7 @@ import PageHero from '../components/PageHero';
 import Callout from '../components/Callout';
 import EndpointCard from '../components/EndpointCard';
 import { PARTNER_V1 } from '../constants/api';
+import { Link } from 'react-router-dom';
 
 export default function Applications() {
   return (
@@ -13,16 +14,16 @@ export default function Applications() {
         canonicalPath="/applications"
       />
       <PageHero
-        badge="Roadmap"
+        badge="Live"
         title="Applications"
-        subtitle="Manage customer installment requests (leads) assigned to your partner account. These endpoints map to the partner panel Requests page."
+        subtitle="List, view, approve, reject, and delete customer installment requests via API key — same leads as the partner panel Requests page."
       />
 
       <div className="doc-prose">
-        <Callout variant="warning" title="Rollout status">
-          Application endpoints are defined in the Partner API specification and map to existing backend
-          controllers. Confirm with your Madadgaar account manager that <code>/api/v1/partner/applications</code>
-          is enabled on your production environment before building against them.
+        <Callout variant="success" title="Live on production">
+          Endpoints are mounted at <code>/api/v1/partner/applications</code>. Requires{' '}
+          <code>applications:read</code> / <code>applications:write</code> scopes on your API key.
+          OpenAPI: <a href={`${PARTNER_V1}/openapi.json`} target="_blank" rel="noreferrer">openapi.json</a>.
         </Callout>
 
         <h2>How applications link to partners</h2>
@@ -56,7 +57,10 @@ export default function Applications() {
         method="GET"
         path={`${PARTNER_V1}/applications/:applicationId`}
         scope="applications:read"
-        description="Full application detail including customer info, selected plan, and status history. Requires ownership."
+        description="Full application detail including customer info, selected plan, and agent details. Only applications where createdBy matches your partnerId."
+        curl={`curl -s "${PARTNER_V1}/applications/APP123" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`}
+        test={{ method: 'GET', url: `${PARTNER_V1}/applications/APP123` }}
       />
 
       <EndpointCard
@@ -79,7 +83,10 @@ export default function Applications() {
         method="DELETE"
         path={`${PARTNER_V1}/applications/:applicationId`}
         scope="applications:write"
-        description="Delete/cancel an application when supported by business rules."
+        description="Delete pending, rejected, or cancelled applications assigned to your partner."
+        curl={`curl -s -X DELETE "${PARTNER_V1}/applications/APP123" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`}
+        test={{ method: 'DELETE', url: `${PARTNER_V1}/applications/APP123` }}
       />
     </>
   );

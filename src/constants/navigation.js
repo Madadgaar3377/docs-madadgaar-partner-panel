@@ -8,6 +8,7 @@ import {
   Lock,
   Code2,
   Rocket,
+  Activity,
 } from 'lucide-react';
 
 export const NAV_SECTIONS = [
@@ -16,6 +17,7 @@ export const NAV_SECTIONS = [
     items: [
       { path: '/', label: 'Overview', icon: BookOpen },
       { path: '/getting-started', label: 'Getting Started', icon: Rocket },
+      { path: '/status', label: 'API Status', icon: Activity },
     ],
   },
   {

@@ -29,6 +29,9 @@ export default function Home() {
           <Link to="/examples" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-madad-600 text-madad-700 font-semibold rounded-xl hover:bg-red-50 transition-colors">
             Code examples
           </Link>
+          <Link to="/status" className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors">
+            API status
+          </Link>
         </div>
       </section>
 
