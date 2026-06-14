@@ -3,7 +3,6 @@ import PageHero from '../components/PageHero';
 import Callout from '../components/Callout';
 import EndpointCard from '../components/EndpointCard';
 import { PARTNER_V1 } from '../constants/api';
-import { Link } from 'react-router-dom';
 
 export default function Applications() {
   return (
