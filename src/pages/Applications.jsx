@@ -2,6 +2,7 @@ import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Callout from '../components/Callout';
 import EndpointCard from '../components/EndpointCard';
+import { Link } from 'react-router-dom';
 import { PARTNER_V1 } from '../constants/api';
 
 export default function Applications() {
