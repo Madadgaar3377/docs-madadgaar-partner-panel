@@ -1,10 +1,12 @@
-import { PARTNER_V1, KEYS_BASE } from './api';
+import { PARTNER_V1, KEYS_BASE, API_BASE } from './api';
 
 export const EXAMPLE_CATEGORIES = [
   { id: 'all', label: 'All examples' },
   { id: 'general', label: 'General / Auth' },
   { id: 'installments', label: 'Installments' },
-  { id: 'applications', label: 'Applications' },
+  { id: 'applications', label: 'Installment applications' },
+  { id: 'loans', label: 'Loans' },
+  { id: 'loan-applications', label: 'Loan applications' },
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'api-keys', label: 'API Keys' },
 ];
@@ -126,6 +128,101 @@ export const INSTALLMENT_FIELD_REFERENCE = [
   { field: 'variants', type: 'array', required: false, description: 'RAM/storage/color options  each variant has price, discountPercent, and optional paymentPlans.' },
   { field: 'finance', type: 'object', required: false, description: 'Product-level finance: { bankName, financeInfo }  bank partnership info.' },
 ];
+
+export const COMPLETE_CREATE_LOAN = {
+  productName: 'Personal Loan - Salaried',
+  bankName: 'Partner Bank Ltd',
+  majorCategory: 'Personal Financing',
+  subCategory: 'Emergency / Personal Needs',
+  minFinancingAmount: 50000,
+  maxFinancingAmount: 2000000,
+  minTenure: 12,
+  maxTenure: 60,
+  tenureUnit: 'Months',
+  financingType: 'Islamic',
+  indicativeRate: '12% - 18%',
+  rateType: 'Floating',
+  description: 'Fast approval for salaried individuals. Shariah-compliant profit-based structure.',
+  planImage: 'https://cdn.example.com/loans/personal-loan-banner.jpg',
+  planDocument: 'https://cdn.example.com/loans/personal-loan-terms.pdf',
+  targetAudience: ['Salaried Individuals'],
+  eligibility: {
+    minAge: 21,
+    maxAge: 60,
+    minIncome: 50000,
+    employmentType: ['Salaried'],
+    requiredDocuments: ['CNIC', 'Salary Slip', 'Bank Statement'],
+  },
+};
+
+export const LOAN_MAJOR_CATEGORIES = [
+  'Home / Real Estate Financing',
+  'Auto Financing',
+  'Personal Financing',
+  'Business / SME Financing',
+  'Other / Specialized Financing',
+  'Installment / Buy-Now-Pay-Later Plans',
+  'Shariah-Compliant / Islamic Plans',
+];
+
+export const LOAN_FIELD_REFERENCE = [
+  { field: 'productName', type: 'string', required: true, description: 'Display name e.g. "Personal Loan - Salaried", "Auto Ijarah".' },
+  { field: 'bankName', type: 'string', required: true, description: 'Bank or finance company name shown to customers.' },
+  { field: 'majorCategory', type: 'string', required: true, description: 'One of the major category enum values (see Loans page).' },
+  { field: 'subCategory', type: 'string', required: false, description: 'Sub-type e.g. "Car (New / Used)", "Home Purchase".' },
+  { field: 'minFinancingAmount', type: 'number', required: false, description: 'Minimum loan amount in PKR.' },
+  { field: 'maxFinancingAmount', type: 'number', required: false, description: 'Maximum loan amount in PKR.' },
+  { field: 'minTenure', type: 'number', required: false, description: 'Minimum tenure in tenureUnit.' },
+  { field: 'maxTenure', type: 'number', required: false, description: 'Maximum tenure in tenureUnit.' },
+  { field: 'tenureUnit', type: 'string', required: false, description: 'Months | Years | Days — defaults to Months.' },
+  { field: 'financingType', type: 'string', required: false, description: 'Conventional | Islamic.' },
+  { field: 'indicativeRate', type: 'string', required: false, description: 'Human-readable rate e.g. "8% - 12% Floating".' },
+  { field: 'rateType', type: 'string', required: false, description: 'Fixed | Variable | Floating.' },
+  { field: 'eligibility', type: 'object', required: false, description: '{ minAge, maxAge, minIncome, employmentType[], requiredDocuments[] }.' },
+  { field: 'targetAudience', type: 'string[]', required: false, description: 'Salaried Individuals, Business Owners, SME / Entrepreneurs, Students, Other.' },
+  { field: 'description', type: 'string', required: false, description: 'Long description, terms, and marketing copy.' },
+  { field: 'planImage', type: 'string', required: false, description: 'HTTPS URL — upload via partner panel first.' },
+  { field: 'planDocument', type: 'string', required: false, description: 'HTTPS URL to PDF terms sheet.' },
+  { field: 'planId', type: 'string', required: false, description: 'Read-only — auto-generated 6-digit ID on create. Use for customer apply.' },
+  { field: 'createdBy', type: 'string', required: false, description: 'Auto-filled from API key — do not send another partner ID.' },
+];
+
+export const LOAN_APPLICATION_STATUS = [
+  { field: 'pending', type: 'status', required: false, description: 'New application — default when customer applies.' },
+  { field: 'in_progress', type: 'status', required: false, description: 'Under review / processing.' },
+  { field: 'approved', type: 'status', required: false, description: 'Approved — customer notified by email.' },
+  { field: 'rejected', type: 'status', required: false, description: 'Rejected — customer notified by email.' },
+  { field: 'cancelled', type: 'status', required: false, description: 'Cancelled by customer or partner.' },
+];
+
+export const CUSTOMER_APPLY_LOAN_BODY = {
+  planId: '123456',
+  applicantInfo: {
+    fullName: 'Ali Ahmed Khan',
+    fatherOrHusbandName: 'Muhammad Khan',
+    cnicNumber: '42101-1234567-1',
+    dateOfBirth: '1990-05-15',
+    gender: 'Male',
+    maritalStatus: 'Married',
+    address: { street: 'Block 5', city: 'Karachi', province: 'Sindh' },
+  },
+  contactInfo: {
+    mobileNumber: '03001234567',
+    email: 'ali@example.com',
+    city: 'Karachi',
+  },
+  incomeDetails: {
+    monthlyIncome: 120000,
+    employmentType: 'Salaried',
+    employerName: 'ABC Pvt Ltd',
+  },
+  loanRequirement: {
+    loanAmount: 500000,
+    loanType: 'Personal Loan',
+    tenureMonths: 36,
+    purpose: 'Home renovation',
+  },
+};
 
 export const PAYMENT_PLAN_FIELDS = [
   { field: 'planName', type: 'string', required: true, description: 'Label shown to customers, e.g. "12 Month Plan".' },
@@ -264,6 +361,130 @@ export const CODE_EXAMPLES = [
     },
   },
   {
+    id: 'list-loans',
+    category: 'loans',
+    title: 'List loan plans',
+    description: 'Paginated list — same data as partner panel Loans page.',
+    language: 'bash',
+    code: `curl -s "${PARTNER_V1}/loans?page=1&limit=20" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
+    test: { method: 'GET', url: `${PARTNER_V1}/loans?page=1&limit=20` },
+  },
+  {
+    id: 'create-loan-full',
+    category: 'loans',
+    title: 'Create loan plan — complete payload',
+    description: 'Full example matching partner panel create loan form. Response includes planId for customer apply.',
+    language: 'bash',
+    getCode() {
+      return `curl -s -X POST "${PARTNER_V1}/loans" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '${JSON.stringify(COMPLETE_CREATE_LOAN)}'`;
+    },
+    test: {
+      method: 'POST',
+      url: `${PARTNER_V1}/loans`,
+      body: COMPLETE_CREATE_LOAN,
+    },
+  },
+  {
+    id: 'get-loan',
+    category: 'loans',
+    title: 'Get one loan plan',
+    description: 'Use 6-digit planId from create response or MongoDB _id.',
+    language: 'bash',
+    code: `curl -s "${PARTNER_V1}/loans/123456" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
+    test: { method: 'GET', url: `${PARTNER_V1}/loans/123456` },
+  },
+  {
+    id: 'update-loan',
+    category: 'loans',
+    title: 'Update loan plan',
+    description: 'Update any allowed field. Cannot change planId or createdBy.',
+    language: 'bash',
+    code: `curl -s -X PUT "${PARTNER_V1}/loans/123456" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"description":"Updated terms","indicativeRate":"10% - 15%"}'`,
+    test: {
+      method: 'PUT',
+      url: `${PARTNER_V1}/loans/123456`,
+      body: { description: 'Updated terms', indicativeRate: '10% - 15%' },
+    },
+  },
+  {
+    id: 'delete-loan',
+    category: 'loans',
+    title: 'Delete loan plan',
+    description: 'Permanently deletes a loan plan you own.',
+    language: 'bash',
+    code: `curl -s -X DELETE "${PARTNER_V1}/loans/123456" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
+    test: { method: 'DELETE', url: `${PARTNER_V1}/loans/123456` },
+  },
+  {
+    id: 'customer-apply-loan',
+    category: 'loan-applications',
+    title: 'Customer apply — POST /api/applyLoan (not Partner API)',
+    description: 'Customers use their Madadgaar JWT. Partners manage leads via /loan-applications.',
+    language: 'bash',
+    getCode() {
+      return `curl -s -X POST "${API_BASE}/applyLoan" \\
+  -H "Authorization: Bearer $CUSTOMER_JWT" \\
+  -H "Content-Type: application/json" \\
+  -d '${JSON.stringify(CUSTOMER_APPLY_LOAN_BODY)}'`;
+    },
+    test: null,
+  },
+  {
+    id: 'list-loan-applications',
+    category: 'loan-applications',
+    title: 'List pending loan applications',
+    description: 'Applications on loan plans you created. Optional ?planId= filter.',
+    language: 'bash',
+    code: `curl -s "${PARTNER_V1}/loan-applications?status=pending&page=1&limit=20" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
+    test: { method: 'GET', url: `${PARTNER_V1}/loan-applications?status=pending` },
+  },
+  {
+    id: 'get-loan-application',
+    category: 'loan-applications',
+    title: 'Get loan application detail',
+    description: 'Full applicant info, loan requirement, assigned agent. Use 6-digit applicationId or MongoDB _id.',
+    language: 'bash',
+    code: `curl -s "${PARTNER_V1}/loan-applications/482910" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
+    test: { method: 'GET', url: `${PARTNER_V1}/loan-applications/482910` },
+  },
+  {
+    id: 'update-loan-application',
+    category: 'loan-applications',
+    title: 'Approve loan application',
+    description: 'Update status — customer receives email notification.',
+    language: 'bash',
+    code: `curl -s -X PATCH "${PARTNER_V1}/loan-applications/482910/status" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"status":"approved","note":"Customer verified"}'`,
+    test: {
+      method: 'PATCH',
+      url: `${PARTNER_V1}/loan-applications/482910/status`,
+      body: { status: 'approved', note: 'Customer verified' },
+    },
+  },
+  {
+    id: 'delete-loan-application',
+    category: 'loan-applications',
+    title: 'Delete loan application',
+    description: 'Only pending, rejected, or cancelled applications.',
+    language: 'bash',
+    code: `curl -s -X DELETE "${PARTNER_V1}/loan-applications/482910" \\
+  -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
+    test: { method: 'DELETE', url: `${PARTNER_V1}/loan-applications/482910` },
+  },
+  {
     id: 'dashboard',
     category: 'dashboard',
     title: 'Dashboard statistics',
@@ -284,7 +505,7 @@ export const CODE_EXAMPLES = [
   -H "Content-Type: application/json" \\
   -d '{
     "name": "Production ERP",
-    "scopes": ["installments:read","installments:write","profile:read"],
+    "scopes": ["installments:read","installments:write","loans:read","loans:write","loan-applications:read","loan-applications:write","profile:read"],
     "expiresAt": null
   }'`,
     test: {
@@ -293,7 +514,15 @@ export const CODE_EXAMPLES = [
       headers: { Authorization: 'Bearer YOUR_PARTNER_JWT' },
       body: {
         name: 'Production ERP',
-        scopes: ['installments:read', 'installments:write', 'profile:read'],
+        scopes: [
+          'installments:read',
+          'installments:write',
+          'loans:read',
+          'loans:write',
+          'loan-applications:read',
+          'loan-applications:write',
+          'profile:read',
+        ],
         expiresAt: null,
       },
     },

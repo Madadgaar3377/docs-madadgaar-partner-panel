@@ -53,7 +53,7 @@ export default function ApiKeysPage() {
   -H "Content-Type: application/json" \\
   -d '{
     "name": "Production ERP",
-    "scopes": ["installments:read","installments:write","profile:read"],
+    "scopes": ["installments:read","installments:write","loans:read","loans:write","loan-applications:read","loan-applications:write","profile:read"],
     "expiresAt": null
   }'`}
         test={{
@@ -62,7 +62,7 @@ export default function ApiKeysPage() {
           headers: { Authorization: 'Bearer YOUR_PARTNER_JWT' },
           body: {
             name: 'Production ERP',
-            scopes: ['installments:read', 'installments:write', 'profile:read'],
+            scopes: ['installments:read', 'installments:write', 'loans:read', 'loans:write', 'loan-applications:read', 'loan-applications:write', 'profile:read'],
             expiresAt: null,
           },
         }}
@@ -74,7 +74,7 @@ export default function ApiKeysPage() {
     "name": "Production ERP",
     "keyPrefix": "mg_live_a8f2",
     "apiKey": "mg_live_a8f2k9XmP4nQ7vR2wL5yH8jT1cB6dF0",
-    "scopes": ["installments:read", "installments:write", "profile:read"],
+    "scopes": ["installments:read", "installments:write", "loans:read", "loans:write", "loan-applications:read", "loan-applications:write", "profile:read"],
     "status": "active",
     "createdAt": "2026-06-11T10:00:00.000Z",
     "expiresAt": null
@@ -106,7 +106,7 @@ export default function ApiKeysPage() {
         description="Update key name, scopes, or expiry. Cannot update revoked keys. Cannot retrieve the secret  only metadata changes."
         body={`{
   "name": "Renamed Production Key",
-  "scopes": ["installments:read", "dashboard:read", "profile:read"]
+  "scopes": ["installments:read", "dashboard:read", "loans:read", "profile:read"]
 }`}
         test={{
           method: 'PATCH',
@@ -114,7 +114,7 @@ export default function ApiKeysPage() {
           headers: { Authorization: 'Bearer YOUR_PARTNER_JWT' },
           body: {
             name: 'Renamed Production Key',
-            scopes: ['installments:read', 'dashboard:read', 'profile:read'],
+            scopes: ['installments:read', 'dashboard:read', 'loans:read', 'profile:read'],
           },
         }}
       />

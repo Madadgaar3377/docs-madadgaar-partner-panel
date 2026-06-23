@@ -5,7 +5,9 @@ import GettingStarted from './pages/GettingStarted';
 import Authentication from './pages/Authentication';
 import ApiKeys from './pages/ApiKeys';
 import Installments from './pages/Installments';
+import Loans from './pages/Loans';
 import Applications from './pages/Applications';
+import LoanApplications from './pages/LoanApplications';
 import Dashboard from './pages/Dashboard';
 import Scopes from './pages/Scopes';
 import Security from './pages/Security';
@@ -21,7 +23,9 @@ export default function App() {
         <Route path="authentication" element={<Authentication />} />
         <Route path="api-keys" element={<ApiKeys />} />
         <Route path="installments" element={<Installments />} />
+        <Route path="loans" element={<Loans />} />
         <Route path="applications" element={<Applications />} />
+        <Route path="loan-applications" element={<LoanApplications />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="scopes" element={<Scopes />} />
         <Route path="security" element={<Security />} />

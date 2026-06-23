@@ -5,8 +5,12 @@ import Callout from '../components/Callout';
 const SCOPES = [
   { id: 'installments:read', desc: 'List and get installment products where you are owner or contributor. Cannot create or modify.', endpoints: 'GET /installments, GET /installments/:id' },
   { id: 'installments:write', desc: 'Create products, update fields, delete listings, add/remove your payment plans.', endpoints: 'POST, PUT, DELETE /installments, /plans' },
-  { id: 'applications:read', desc: 'List and view customer applications assigned to your partner.', endpoints: 'GET /applications, GET /applications/:id' },
-  { id: 'applications:write', desc: 'Approve, reject, or update application status.', endpoints: 'PATCH /applications/:id/status' },
+  { id: 'applications:read', desc: 'List and view customer installment applications assigned to your partner.', endpoints: 'GET /applications, GET /applications/:id' },
+  { id: 'applications:write', desc: 'Approve, reject, or update installment application status.', endpoints: 'PATCH /applications/:id/status' },
+  { id: 'loans:read', desc: 'List and get loan plans you created.', endpoints: 'GET /loans, GET /loans/:id' },
+  { id: 'loans:write', desc: 'Create, update, and delete your loan plans.', endpoints: 'POST, PUT, DELETE /loans' },
+  { id: 'loan-applications:read', desc: 'List and view loan applications on your loan plans.', endpoints: 'GET /loan-applications' },
+  { id: 'loan-applications:write', desc: 'Approve, reject, or update loan application status.', endpoints: 'PATCH /loan-applications/:id/status' },
   { id: 'dashboard:read', desc: 'Fetch dashboard statistics (counts, recent items).', endpoints: 'GET /dashboard' },
   { id: 'profile:read', desc: 'Include full partner profile in GET /me response. Always added on new keys.', endpoints: 'GET /me (extended fields)' },
   { id: '*', desc: 'Full access to all partner scopes. Admin-granted only  cannot combine with other scopes.', endpoints: 'All integration routes' },
@@ -17,7 +21,7 @@ export default function Scopes() {
     <>
       <SEO
         title="Scopes & Permissions"
-        description="Madadgaar Partner API scope reference. Understand installments:read, installments:write, applications scopes, and least-privilege key design."
+        description="Madadgaar Partner API scope reference. Understand installments, loans, applications scopes, and least-privilege key design."
         canonicalPath="/scopes"
       />
       <PageHero
@@ -37,7 +41,7 @@ export default function Scopes() {
 
         <Callout variant="tip" title="Default scopes on create">
           If you omit scopes when creating a key, Madadgaar assigns read-only defaults plus profile:read:
-          installments:read, applications:read, dashboard:read, profile:read. You must explicitly enable
+          installments:read, applications:read, loans:read, loan-applications:read, dashboard:read, profile:read. You must explicitly enable
           write scopes for mutations.
         </Callout>
 
@@ -68,11 +72,15 @@ export default function Scopes() {
       <div className="doc-prose">
         <h2>Recommended key profiles</h2>
         <h3>Catalog sync (read-only)</h3>
-        <p><code>installments:read</code>, <code>dashboard:read</code>, <code>profile:read</code></p>
-        <h3>CRM lead pull</h3>
+        <p><code>installments:read</code>, <code>loans:read</code>, <code>dashboard:read</code>, <code>profile:read</code></p>
+        <h3>CRM lead pull (installments)</h3>
         <p><code>applications:read</code>, <code>profile:read</code></p>
+        <h3>CRM lead pull (loans)</h3>
+        <p><code>loans:read</code>, <code>loan-applications:read</code>, <code>profile:read</code></p>
+        <h3>Full loan bank integration</h3>
+        <p><code>loans:read</code>, <code>loans:write</code>, <code>loan-applications:read</code>, <code>loan-applications:write</code>, <code>profile:read</code></p>
         <h3>Full ERP integration</h3>
-        <p>All read + write scopes for installments and applications.</p>
+        <p>All read + write scopes for installments, loans, and applications.</p>
       </div>
     </>
   );

@@ -9,17 +9,23 @@ export default function Applications() {
   return (
     <>
       <SEO
-        title="Applications API"
+        title="Installment Applications API"
         description="Madadgaar Partner API for customer installment applications: list incoming requests, view details, and update approval status from your CRM."
         canonicalPath="/applications"
       />
       <PageHero
-        badge="Live"
-        title="Applications"
-        subtitle="List, view, approve, reject, and delete customer installment requests via API key — same leads as the partner panel Requests page."
+        badge="Installments"
+        title="Installment applications"
+        subtitle="List, view, approve, reject, and delete customer installment requests via API key — same leads as the partner panel Requests page. For loans, see Loan applications."
       />
 
       <div className="doc-prose">
+        <Callout variant="info" title="Loan applications are separate">
+          This page covers <strong>installment</strong> applications at <code>/applications</code>.
+          For loan leads on your loan plans, use <Link to="/loan-applications">Loan applications API</Link> at{' '}
+          <code>/loan-applications</code> with <code>loan-applications:read</code> / <code>loan-applications:write</code> scopes.
+        </Callout>
+
         <Callout variant="success" title="Live on production">
           Endpoints are mounted at <code>/api/v1/partner/applications</code>. Requires{' '}
           <code>applications:read</code> / <code>applications:write</code> scopes on your API key.

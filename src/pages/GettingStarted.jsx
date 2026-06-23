@@ -46,7 +46,7 @@ export default function GettingStarted() {
           },
           {
             title: 'Generate your API key',
-            description: 'Go to Settings → API Keys → click "Generate Key". Give it a clear name like "Production Website" or "ERP Sync". Select which permissions (scopes) this key needs  if unsure, enable read + write for installments.',
+            description: 'Go to Settings → API Keys → click "Generate Key". Give it a clear name like "Production Website" or "ERP Sync". Select scopes: installments, loans, and/or applications as needed.',
             detail: 'When you click Generate, the full secret appears once on screen AND is sent to your registered email. Save both copies. The email is your long-term backup if you lose the key from the screen.',
           },
           {
@@ -70,13 +70,24 @@ MADADGAAR_API_BASE=${PARTNER_V1}`}</CodeBlock>
           },
           {
             title: 'List your installment products',
-            description: 'If the test passed, try listing products. This returns the same data you see under Installments → View All Plans in the partner panel.',
+            description: 'If the test passed, try listing installment products. This returns the same data you see under Installments → View All Plans in the partner panel.',
             children: (
               <CodeBlock
-                title="List products"
+                title="List installments"
                 test={{ method: 'GET', url: `${PARTNER_V1}/installments?page=1&limit=10` }}
               >{`curl -s "${PARTNER_V1}/installments?page=1&limit=10" \\
   -H "X-API-Key: YOUR_MG_LIVE_KEY_HERE"`}</CodeBlock>
+            ),
+          },
+          {
+            title: 'Optional: list your loan plans',
+            description: 'If you sell loans, enable loans:read on your key and list plans from the partner panel Loans section.',
+            children: (
+              <CodeBlock
+                title="List loans"
+                test={{ method: 'GET', url: `${PARTNER_V1}/loans?page=1&limit=10` }}
+              >{`curl -s "${PARTNER_V1}/loans?page=1&limit=10" \\
+  -H "Authorization: Bearer YOUR_MG_LIVE_KEY_HERE"`}</CodeBlock>
             ),
           },
         ]}
@@ -95,12 +106,13 @@ MADADGAAR_API_BASE=${PARTNER_V1}`}</CodeBlock>
           <li><strong>Using API key on /keys endpoints</strong>  key management needs JWT from login, not API key.</li>
           <li><strong>Putting key in frontend JavaScript</strong>  anyone can steal it from browser dev tools.</li>
           <li><strong>Partner not admin-verified</strong>  complete profile and wait for Madadgaar approval first.</li>
-          <li><strong>Missing write scope</strong>  create/update needs <code>installments:write</code> on the key.</li>
+          <li><strong>Missing write scope</strong>  create/update needs <code>installments:write</code> or <code>loans:write</code> on the key.</li>
         </ul>
 
         <Callout variant="success" title="You are ready!">
           Next, read <Link to="/authentication">Authentication</Link> to understand JWT vs API key deeply,
-          or jump to <Link to="/installments">Installments</Link> to create your first product via API.
+          <Link to="/installments"> Installments</Link> or <Link to="/loans">Loans</Link> to create products via API,
+          and <Link to="/loan-applications">Loan applications</Link> to manage loan leads.
         </Callout>
 
         <h2>Optional: create key via HTTP (advanced)</h2>
@@ -113,7 +125,7 @@ MADADGAAR_API_BASE=${PARTNER_V1}`}</CodeBlock>
             headers: { Authorization: 'Bearer YOUR_PARTNER_JWT' },
             body: {
               name: 'Production ERP',
-              scopes: ['installments:read', 'installments:write', 'profile:read'],
+              scopes: ['installments:read', 'installments:write', 'loans:read', 'loans:write', 'loan-applications:read', 'loan-applications:write', 'profile:read'],
               expiresAt: null,
             },
           }}
@@ -123,7 +135,7 @@ Content-Type: application/json
 
 {
   "name": "Production ERP",
-  "scopes": ["installments:read", "installments:write", "profile:read"],
+  "scopes": ["installments:read", "installments:write", "loans:read", "loans:write", "loan-applications:read", "loan-applications:write", "profile:read"],
   "expiresAt": null
 }`}</CodeBlock>
       </div>

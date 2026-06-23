@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Key, Layers, Clock, Mail, Server } from 'lucide-react';
+import { ArrowRight, Key, Layers, Landmark, Clock, Mail, Server } from 'lucide-react';
 import SEO from '../components/SEO';
 import Callout from '../components/Callout';
 import { PARTNER_V1, PARTNER_PANEL } from '../constants/api';
@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <SEO
         title="Overview"
-        description="Official Madadgaar Partner API documentation. Connect your website, ERP, or custom panel to manage installments and applications with secure API keys."
+        description="Official Madadgaar Partner API documentation. Connect your website, ERP, or custom panel to manage installments, loans, applications, and dashboard using secure API keys."
         canonicalPath="/"
       />
 
@@ -37,7 +37,7 @@ export default function Home() {
 
       <div className="doc-prose">
         <Callout variant="learn" title="Who should read this?">
-          <strong>Verified Madadgaar partners</strong> who want to automate work: sync products to their website,
+          <strong>Verified Madadgaar partners</strong> who want to automate work: sync installment and loan products to their website,
           pull customer applications into a CRM, update listings from an ERP, or build a custom admin tool.
           If you only use the partner panel in a browser, you do not need the API  but if you have developers
           on your team, this documentation will save weeks of guesswork.
@@ -57,11 +57,12 @@ export default function Home() {
         </p>
 
         <h2>How it works  simple picture</h2>
-        <div className="grid sm:grid-cols-3 gap-4 my-8 not-prose">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 my-8 not-prose">
           {[
             { icon: Key, title: '1. Get API key', desc: 'Generate in partner panel Settings → API Keys. Key is emailed to you for safekeeping.', to: '/api-keys' },
             { icon: Server, title: '2. Store on server', desc: 'Put key in .env on your backend. Never in website JavaScript or mobile apps.', to: '/security' },
-            { icon: Layers, title: '3. Call endpoints', desc: 'List products, create listings, check applications  from your own systems.', to: '/installments' },
+            { icon: Layers, title: '3. Installments', desc: 'CRUD products, variants, finance, payment plans — multi-vendor catalog.', to: '/installments' },
+            { icon: Landmark, title: '4. Loans', desc: 'CRUD loan plans, manage loan applications, customer apply via planId.', to: '/loans' },
           ].map((card) => {
             const Icon = card.icon;
             return (
@@ -93,7 +94,7 @@ export default function Home() {
             </thead>
             <tbody className="divide-y divide-red-50">
               <tr className="bg-white"><td className="p-3 font-semibold">A  Keys</td><td className="p-3 font-mono text-xs">/api/v1/partner/keys</td><td className="p-3">Partner JWT</td><td className="p-3 text-gray-600">Create & revoke API keys only</td></tr>
-              <tr className="bg-white"><td className="p-3 font-semibold">B  Integration</td><td className="p-3 font-mono text-xs">{PARTNER_V1}</td><td className="p-3">API key</td><td className="p-3 text-gray-600">Installments, dashboard, applications</td></tr>
+              <tr className="bg-white"><td className="p-3 font-semibold">B  Integration</td><td className="p-3 font-mono text-xs">{PARTNER_V1}</td><td className="p-3">API key</td><td className="p-3 text-gray-600">Installments, loans, applications, dashboard</td></tr>
             </tbody>
           </table>
         </div>
@@ -101,9 +102,12 @@ export default function Home() {
         <h2>What you can do today</h2>
         <ul>
           <li><strong>API keys</strong>  create, list, revoke, email confirmation with full key</li>
-          <li><strong>Installments</strong>  full create, read, update, delete (same as partner panel)</li>
+          <li><strong>Installments</strong>  full create, read, update, delete (variants, finance, payment plans)</li>
+          <li><strong>Loans</strong>  full CRUD for loan plans (same as partner panel Loans)</li>
+          <li><strong>Installment applications</strong>  list, detail, approve/reject at <code>/applications</code></li>
+          <li><strong>Loan applications</strong>  list, detail, approve/reject at <code>/loan-applications</code></li>
           <li><strong>Dashboard</strong>  stats and <code>GET /me</code> health check</li>
-          <li><strong>Applications</strong>  documented; confirm enablement with Madadgaar support</li>
+          <li><strong>Customer apply</strong>  customers use <code>POST /api/applyLoan</code> with their JWT (not Partner API)</li>
         </ul>
 
         <div className="grid sm:grid-cols-2 gap-4 my-8 not-prose">

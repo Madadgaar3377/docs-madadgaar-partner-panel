@@ -46,7 +46,7 @@ export default function DashboardPage() {
       "keyId": "key_abc123",
       "name": "Production",
       "keyPrefix": "mg_live_a8f2",
-      "scopes": ["installments:read", "profile:read"]
+      "scopes": ["installments:read", "loans:read", "loan-applications:read", "profile:read"]
     }
   }
 }`}
@@ -56,7 +56,7 @@ export default function DashboardPage() {
         <h2>GET /dashboard  partner statistics</h2>
         <p>
           Returns the same statistics shown on the partner panel dashboard: total installments (owned vs
-          contributed), installment request count, properties, loans, and recent activity snippets.
+          contributed), installment request count, loan plans, loan applications, properties, and recent activity snippets.
           Requires <code>dashboard:read</code> scope.
         </p>
       </div>
@@ -65,7 +65,7 @@ export default function DashboardPage() {
         method="GET"
         path={`${PARTNER_V1}/dashboard`}
         scope="dashboard:read"
-        description="Partner dashboard stats  installments, requests, properties, loans."
+        description="Partner dashboard stats — installments, loans, requests, properties."
         curl={`curl -s "${PARTNER_V1}/dashboard" \\
   -H "X-API-Key: $MADADGAAR_API_KEY"`}
         test={{ method: 'GET', url: `${PARTNER_V1}/dashboard` }}

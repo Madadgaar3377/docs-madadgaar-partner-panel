@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import CodeBlock from '../components/CodeBlock';
 import CategoryFilter from '../components/CategoryFilter';
 import { PARTNER_V1 } from '../constants/api';
-import { CODE_EXAMPLES, EXAMPLE_CATEGORIES, COMPLETE_CREATE_INSTALLMENT } from '../constants/apiExamples';
+import { CODE_EXAMPLES, EXAMPLE_CATEGORIES, COMPLETE_CREATE_INSTALLMENT, COMPLETE_CREATE_LOAN } from '../constants/apiExamples';
 
 function getExampleCode(ex) {
   if (typeof ex.getCode === 'function') return ex.getCode();
@@ -24,7 +24,7 @@ export default function Examples() {
     <>
       <SEO
         title="Code Examples"
-        description="Copy-paste Madadgaar Partner API curl examples with Test now buttons. Filter by Installments, Applications, Dashboard, and API Keys."
+        description="Copy-paste Madadgaar Partner API curl examples with Test now buttons. Filter by Installments, Loans, Applications, Dashboard, and API Keys."
         canonicalPath="/examples"
       />
       <PageHero
@@ -59,6 +59,19 @@ export default function Examples() {
           test={{ method: 'POST', url: `${PARTNER_V1}/installments`, body: COMPLETE_CREATE_INSTALLMENT }}
         >
           {JSON.stringify(COMPLETE_CREATE_INSTALLMENT, null, 2)}
+        </CodeBlock>
+
+        <h2>Complete create loan JSON</h2>
+        <p>
+          Use this payload when creating loan plans. See the <Link to="/loans">Loans</Link> page for categories,
+          eligibility fields, and customer apply flow.
+        </p>
+        <CodeBlock
+          title="Request body (JSON)"
+          language="json"
+          test={{ method: 'POST', url: `${PARTNER_V1}/loans`, body: COMPLETE_CREATE_LOAN }}
+        >
+          {JSON.stringify(COMPLETE_CREATE_LOAN, null, 2)}
         </CodeBlock>
 
         <h2>Environment setup</h2>
@@ -97,6 +110,47 @@ async function main() {
 
 main().catch(console.error);`}</CodeBlock>
 
+        <h2>Node.js — loans &amp; loan applications</h2>
+        <CodeBlock
+          title="sync-loans.js"
+          test={{ method: 'GET', url: `${PARTNER_V1}/loans?page=1&limit=50` }}
+        >{`const API_KEY = process.env.MADADGAAR_API_KEY;
+const BASE = process.env.MADADGAAR_API_BASE;
+const headers = { Authorization: \`Bearer \${API_KEY}\`, 'Content-Type': 'application/json' };
+
+async function listLoans(page = 1) {
+  const res = await fetch(\`\${BASE}/loans?page=\${page}&limit=50\`, { headers });
+  const data = await res.json();
+  if (!data.success) throw new Error(data.message);
+  return data;
+}
+
+async function listLoanApplications(status = 'pending') {
+  const res = await fetch(\`\${BASE}/loan-applications?status=\${status}&page=1&limit=50\`, { headers });
+  const data = await res.json();
+  if (!data.success) throw new Error(data.message);
+  return data;
+}
+
+async function approveLoanApplication(applicationId, note = '') {
+  const res = await fetch(\`\${BASE}/loan-applications/\${applicationId}/status\`, {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify({ status: 'approved', note }),
+  });
+  return res.json();
+}
+
+async function main() {
+  const loans = await listLoans();
+  console.log('Loan plans:', loans.data.length);
+
+  const pending = await listLoanApplications('pending');
+  console.log('Pending loan applications:', pending.data.length);
+}
+
+main().catch(console.error);`}</CodeBlock>
+
         <h2>Python (requests)</h2>
         <CodeBlock
           title="madadgaar_client.py"
@@ -113,15 +167,25 @@ def list_installments(page=1, limit=20):
     r.raise_for_status()
     return r.json()
 
-def create_product(payload):
-    r = requests.post(f"{BASE}/installments", json=payload, headers=HEADERS, timeout=60)
+def list_loans(page=1, limit=20):
+    r = requests.get(f"{BASE}/loans", params={"page": page, "limit": limit}, headers=HEADERS, timeout=30)
+    r.raise_for_status()
+    return r.json()
+
+def list_loan_applications(status="pending", plan_id=None):
+    params = {"status": status, "page": 1, "limit": 50}
+    if plan_id:
+        params["planId"] = plan_id
+    r = requests.get(f"{BASE}/loan-applications", params=params, headers=HEADERS, timeout=30)
     r.raise_for_status()
     return r.json()
 
 if __name__ == "__main__":
     me = requests.get(f"{BASE}/me", headers=HEADERS).json()
     print("Partner:", me.get("data", {}).get("partnerId"))
-    print("Installments:", len(list_installments()["data"]))`}</CodeBlock>
+    print("Installments:", len(list_installments()["data"]))
+    print("Loans:", len(list_loans()["data"]))
+    print("Loan apps pending:", len(list_loan_applications()["data"]))`}</CodeBlock>
 
         <h2>Error handling template</h2>
         <CodeBlock title="response handling" showTest={false}>{`// Always check success field

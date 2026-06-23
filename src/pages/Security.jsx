@@ -50,13 +50,14 @@ export default function Security() {
           Every write operation checks that resources belong to the <code>partnerId</code> from the API key.
           The server overwrites <code>userId</code> in create payloads  spoofing another partner is ignored.
           Application and installment reads filter by <code>createdBy</code> / plan ownership.
+          Loan applications filter by <code>planId</code> on plans you created. Loan plans filter by <code>createdBy</code>.
         </p>
 
         <h2>Rate limits (proposed production)</h2>
         <ul>
           <li><strong>Per API key:</strong> 100 requests / minute</li>
           <li><strong>Per partner (all keys):</strong> 500 requests / minute</li>
-          <li><strong>Create/update installment:</strong> 20 requests / minute</li>
+          <li><strong>Create/update installment or loan:</strong> 20 requests / minute</li>
         </ul>
         <p>Exceeding limits returns <code>429 Too Many Requests</code>. Implement exponential backoff in clients.</p>
 

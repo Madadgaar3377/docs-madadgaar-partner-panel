@@ -64,7 +64,7 @@ X-API-Key: mg_live_xxxxxxxx`}</CodeBlock>
           <li>Check key status is <code>active</code> and not past <code>expiresAt</code>.</li>
           <li>Load partner user  must be verified, active, not blocked.</li>
           <li>Attach <code>partnerId</code> and scopes to the request context.</li>
-          <li>Check route-required scope (e.g. <code>installments:write</code>).</li>
+          <li>Check route-required scope (e.g. <code>installments:write</code>, <code>loans:write</code>, <code>loan-applications:write</code>).</li>
           <li>Update <code>lastUsedAt</code> for audit.</li>
         </ol>
 

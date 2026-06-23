@@ -8,7 +8,9 @@ const LIVE = [
   { area: 'API key CRUD', path: '/api/v1/partner/keys', auth: 'JWT', note: 'Create, list, revoke; email on create/revoke' },
   { area: 'GET /me', path: `${PARTNER_V1}/me`, auth: 'API key', note: 'Health check; full profile with profile:read' },
   { area: 'Installments CRUD', path: `${PARTNER_V1}/installments`, auth: 'API key', note: 'List, create, get, update, delete, plans' },
-  { area: 'Applications', path: `${PARTNER_V1}/applications`, auth: 'API key', note: 'List, detail, approve/reject, delete' },
+  { area: 'Loans CRUD', path: `${PARTNER_V1}/loans`, auth: 'API key', note: 'List, create, get, update, delete loan plans' },
+  { area: 'Installment applications', path: `${PARTNER_V1}/applications`, auth: 'API key', note: 'List, detail, approve/reject, delete' },
+  { area: 'Loan applications', path: `${PARTNER_V1}/loan-applications`, auth: 'API key', note: 'List, detail, approve/reject, delete' },
   { area: 'Dashboard', path: `${PARTNER_V1}/dashboard`, auth: 'API key', note: 'Same stats as partner panel' },
   { area: 'OpenAPI spec', path: `${PARTNER_V1}/openapi.json`, auth: 'Public', note: 'Import to Postman or Swagger' },
   { area: 'Rate limits', path: 'All integration routes', auth: 'API key', note: '100 req/min; 20 writes/min per key' },
@@ -34,12 +36,12 @@ export default function Status() {
       <PageHero
         badge="Updated"
         title="API Status & Roadmap"
-        subtitle="Applications API, OpenAPI, Postman, rate limits, and audit logs are now live on the backend."
+        subtitle="Installments, loans, applications, OpenAPI, Postman, rate limits, and audit logs are live on the backend."
       />
 
       <div className="doc-prose">
         <Callout variant="success" title="Production-ready">
-          Partners can manage installments and applications via API key, with rate limiting and admin audit visibility.
+          Partners can manage installments, loans, and applications via API key, with rate limiting and admin audit visibility.
           Download the{' '}
           <a href={`${PARTNER_V1}/openapi.json`} target="_blank" rel="noreferrer">OpenAPI spec</a> or import the Postman collection from the backend repo.
         </Callout>
@@ -101,9 +103,10 @@ export default function Status() {
         <h2>Setup checklist</h2>
         <ol>
           <li>Complete partner profile and get admin approval</li>
-          <li>Open <a href={`${PARTNER_PANEL}/settings/api-keys`} target="_blank" rel="noreferrer">API Keys</a> → Generate Key with <code>applications:read</code> + <code>applications:write</code></li>
-          <li>Test <code>GET {PARTNER_V1}/applications?status=pending</code></li>
-          <li>Approve leads with <code>PATCH .../applications/:id/status</code> — see <Link to="/applications">Applications</Link></li>
+          <li>Open <a href={`${PARTNER_PANEL}/settings/api-keys`} target="_blank" rel="noreferrer">API Keys</a> → Generate Key with needed scopes</li>
+          <li>Installments: test <code>GET {PARTNER_V1}/applications?status=pending</code> — see <Link to="/applications">Installment applications</Link></li>
+          <li>Loans: test <code>GET {PARTNER_V1}/loans</code> and <code>GET {PARTNER_V1}/loan-applications?status=pending</code> — see <Link to="/loans">Loans</Link> and <Link to="/loan-applications">Loan applications</Link></li>
+          <li>Customers apply for loans via <code>POST /api/applyLoan</code> (customer JWT) — documented on <Link to="/loans">Loans</Link> page</li>
         </ol>
       </div>
     </>
