@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Callout from '../components/Callout';
-import { PARTNER_V1, PARTNER_PANEL, DOCS_SITE } from '../constants/api';
+import { PARTNER_V1, PARTNER_PANEL } from '../constants/api';
 
 const LIVE = [
   { area: 'API key CRUD', path: '/api/v1/partner/keys', auth: 'JWT', note: 'Create, list, revoke; email on create/revoke' },
