@@ -40,7 +40,7 @@ export default function Loans() {
       <PageHero
         badge="API key required"
         title="Loans"
-        subtitle="Manage loan plans programmatically — same data as the partner panel Loans page. Customers apply with their Madadgaar account; you manage leads via Loan applications API."
+        subtitle="Manage loan plans programmatically  same data as the partner panel Loans page. Customers apply with their Madadgaar account; you manage leads via Loan applications API."
       />
 
       <CategoryFilter categories={LOAN_SECTIONS} active={section} onChange={setSection} />
@@ -57,11 +57,11 @@ export default function Loans() {
           <p>
             Unlike installments (multi-vendor shared products), each <strong>loan plan is owned by one partner</strong>.
             The plan stores <code>createdBy</code> as your <code>partnerId</code>. List, get, update, and delete only
-            touch plans you created. On create, <code>createdBy</code> is overwritten from your API key — never send
+            touch plans you created. On create, <code>createdBy</code> is overwritten from your API key  never send
             another partner&apos;s ID.
           </p>
           <p>
-            The server assigns a unique <code>planId</code> (6-digit string) on create. Save this ID — customers need it
+            The server assigns a unique <code>planId</code> (6-digit string) on create. Save this ID  customers need it
             when applying via <code>POST /api/applyLoan</code>, and you use it to filter applications.
           </p>
 
@@ -81,7 +81,7 @@ export default function Loans() {
             <li>Set required fields: <code>productName</code>, <code>bankName</code>, <code>majorCategory</code>.</li>
             <li>Set financing range: <code>minFinancingAmount</code>, <code>maxFinancingAmount</code>, tenure fields.</li>
             <li>Optional: <code>eligibility</code> (age, income, employment type, documents), <code>targetAudience</code>, <code>description</code>.</li>
-            <li>POST to <code>/loans</code> — response <code>data.planId</code> is the customer-facing plan ID.</li>
+            <li>POST to <code>/loans</code>  response <code>data.planId</code> is the customer-facing plan ID.</li>
             <li>Plan appears on Madadgaar after admin approval (same as partner panel).</li>
           </ol>
 
@@ -95,7 +95,7 @@ export default function Loans() {
           <h3>Complete request body</h3>
           <p>Personal loan example with eligibility, target audience, and document URLs:</p>
           <CodeBlock
-            title="POST /loans — full JSON body"
+            title="POST /loans  full JSON body"
             language="json"
             test={{ method: 'POST', url: `${PARTNER_V1}/loans`, body: COMPLETE_CREATE_LOAN }}
           >

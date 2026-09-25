@@ -34,7 +34,7 @@ export default function ApiKeysPage() {
           <a href="https://api.madadgaar.com.pk/api/v1/partner/openapi.json" target="_blank" rel="noreferrer">
             openapi.json
           </a>
-          . List endpoints return metadata (name, prefix, scopes, last used) — never the secret.
+          . List endpoints return metadata (name, prefix, scopes, last used)  never the secret.
         </p>
         <p>
           Each key is linked to <code>partnerId</code>. Maximum 10 active keys per partner. Revoking a key

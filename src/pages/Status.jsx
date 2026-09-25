@@ -19,9 +19,9 @@ const LIVE = [
 ];
 
 const PLANNED = [
-  { area: 'Admin panel UI for API usage', path: '—', note: 'Charts in admin dashboard (API ready)' },
-  { area: 'Sandbox mg_test keys', path: '—', note: 'Optional test environment' },
-  { area: 'IP allowlist per key', path: '—', note: 'Enterprise security option' },
+  { area: 'Admin panel UI for API usage', path: '', note: 'Charts in admin dashboard (API ready)' },
+  { area: 'Sandbox mg_test keys', path: '', note: 'Optional test environment' },
+  { area: 'IP allowlist per key', path: '', note: 'Enterprise security option' },
   { area: 'Public apply token', path: '/api/v1/public/apply', note: 'Apply from partner site without Madadgaar login' },
 ];
 
@@ -104,9 +104,9 @@ export default function Status() {
         <ol>
           <li>Complete partner profile and get admin approval</li>
           <li>Open <a href={`${PARTNER_PANEL}/settings/api-keys`} target="_blank" rel="noreferrer">API Keys</a> → Generate Key with needed scopes</li>
-          <li>Installments: test <code>GET {PARTNER_V1}/applications?status=pending</code> — see <Link to="/applications">Installment applications</Link></li>
-          <li>Loans: test <code>GET {PARTNER_V1}/loans</code> and <code>GET {PARTNER_V1}/loan-applications?status=pending</code> — see <Link to="/loans">Loans</Link> and <Link to="/loan-applications">Loan applications</Link></li>
-          <li>Customers apply for loans via <code>POST /api/applyLoan</code> (customer JWT) — documented on <Link to="/loans">Loans</Link> page</li>
+          <li>Installments: test <code>GET {PARTNER_V1}/applications?status=pending</code>  see <Link to="/applications">Installment applications</Link></li>
+          <li>Loans: test <code>GET {PARTNER_V1}/loans</code> and <code>GET {PARTNER_V1}/loan-applications?status=pending</code>  see <Link to="/loans">Loans</Link> and <Link to="/loan-applications">Loan applications</Link></li>
+          <li>Customers apply for loans via <code>POST /api/applyLoan</code> (customer JWT)  documented on <Link to="/loans">Loans</Link> page</li>
         </ol>
       </div>
     </>

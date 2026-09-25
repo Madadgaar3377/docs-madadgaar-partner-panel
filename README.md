@@ -48,10 +48,10 @@ API implementation lives in:
 
 See that folder's `README.md` for route list and middleware. When backend changes, update:
 
-- `src/constants/apiExamples.js` — curl examples
-- `src/pages/Installments.jsx` — field reference
-- `src/pages/Status.jsx` — rollout status
-- `public/sitemap.xml` — new routes
+- `src/constants/apiExamples.js`  curl examples
+- `src/pages/Installments.jsx`  field reference
+- `src/pages/Status.jsx`  rollout status
+- `public/sitemap.xml`  new routes
 
 ## Related
 

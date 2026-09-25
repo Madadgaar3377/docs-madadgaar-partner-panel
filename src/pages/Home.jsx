@@ -61,7 +61,7 @@ export default function Home() {
           {[
             { icon: Key, title: '1. Get API key', desc: 'Generate in partner panel Settings → API Keys. Key is emailed to you for safekeeping.', to: '/api-keys' },
             { icon: Server, title: '2. Store on server', desc: 'Put key in .env on your backend. Never in website JavaScript or mobile apps.', to: '/security' },
-            { icon: Layers, title: '3. Installments', desc: 'CRUD products, variants, finance, payment plans — multi-vendor catalog.', to: '/installments' },
+            { icon: Layers, title: '3. Installments', desc: 'CRUD products, variants, finance, payment plans  multi-vendor catalog.', to: '/installments' },
             { icon: Landmark, title: '4. Loans', desc: 'CRUD loan plans, manage loan applications, customer apply via planId.', to: '/loans' },
           ].map((card) => {
             const Icon = card.icon;

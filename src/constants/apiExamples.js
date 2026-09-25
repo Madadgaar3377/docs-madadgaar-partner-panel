@@ -174,24 +174,24 @@ export const LOAN_FIELD_REFERENCE = [
   { field: 'maxFinancingAmount', type: 'number', required: false, description: 'Maximum loan amount in PKR.' },
   { field: 'minTenure', type: 'number', required: false, description: 'Minimum tenure in tenureUnit.' },
   { field: 'maxTenure', type: 'number', required: false, description: 'Maximum tenure in tenureUnit.' },
-  { field: 'tenureUnit', type: 'string', required: false, description: 'Months | Years | Days — defaults to Months.' },
+  { field: 'tenureUnit', type: 'string', required: false, description: 'Months | Years | Days  defaults to Months.' },
   { field: 'financingType', type: 'string', required: false, description: 'Conventional | Islamic.' },
   { field: 'indicativeRate', type: 'string', required: false, description: 'Human-readable rate e.g. "8% - 12% Floating".' },
   { field: 'rateType', type: 'string', required: false, description: 'Fixed | Variable | Floating.' },
   { field: 'eligibility', type: 'object', required: false, description: '{ minAge, maxAge, minIncome, employmentType[], requiredDocuments[] }.' },
   { field: 'targetAudience', type: 'string[]', required: false, description: 'Salaried Individuals, Business Owners, SME / Entrepreneurs, Students, Other.' },
   { field: 'description', type: 'string', required: false, description: 'Long description, terms, and marketing copy.' },
-  { field: 'planImage', type: 'string', required: false, description: 'HTTPS URL — upload via partner panel first.' },
+  { field: 'planImage', type: 'string', required: false, description: 'HTTPS URL  upload via partner panel first.' },
   { field: 'planDocument', type: 'string', required: false, description: 'HTTPS URL to PDF terms sheet.' },
-  { field: 'planId', type: 'string', required: false, description: 'Read-only — auto-generated 6-digit ID on create. Use for customer apply.' },
-  { field: 'createdBy', type: 'string', required: false, description: 'Auto-filled from API key — do not send another partner ID.' },
+  { field: 'planId', type: 'string', required: false, description: 'Read-only  auto-generated 6-digit ID on create. Use for customer apply.' },
+  { field: 'createdBy', type: 'string', required: false, description: 'Auto-filled from API key  do not send another partner ID.' },
 ];
 
 export const LOAN_APPLICATION_STATUS = [
-  { field: 'pending', type: 'status', required: false, description: 'New application — default when customer applies.' },
+  { field: 'pending', type: 'status', required: false, description: 'New application  default when customer applies.' },
   { field: 'in_progress', type: 'status', required: false, description: 'Under review / processing.' },
-  { field: 'approved', type: 'status', required: false, description: 'Approved — customer notified by email.' },
-  { field: 'rejected', type: 'status', required: false, description: 'Rejected — customer notified by email.' },
+  { field: 'approved', type: 'status', required: false, description: 'Approved  customer notified by email.' },
+  { field: 'rejected', type: 'status', required: false, description: 'Rejected  customer notified by email.' },
   { field: 'cancelled', type: 'status', required: false, description: 'Cancelled by customer or partner.' },
 ];
 
@@ -364,7 +364,7 @@ export const CODE_EXAMPLES = [
     id: 'list-loans',
     category: 'loans',
     title: 'List loan plans',
-    description: 'Paginated list — same data as partner panel Loans page.',
+    description: 'Paginated list  same data as partner panel Loans page.',
     language: 'bash',
     code: `curl -s "${PARTNER_V1}/loans?page=1&limit=20" \\
   -H "Authorization: Bearer $MADADGAAR_API_KEY"`,
@@ -373,7 +373,7 @@ export const CODE_EXAMPLES = [
   {
     id: 'create-loan-full',
     category: 'loans',
-    title: 'Create loan plan — complete payload',
+    title: 'Create loan plan  complete payload',
     description: 'Full example matching partner panel create loan form. Response includes planId for customer apply.',
     language: 'bash',
     getCode() {
@@ -427,7 +427,7 @@ export const CODE_EXAMPLES = [
   {
     id: 'customer-apply-loan',
     category: 'loan-applications',
-    title: 'Customer apply — POST /api/applyLoan (not Partner API)',
+    title: 'Customer apply  POST /api/applyLoan (not Partner API)',
     description: 'Customers use their Madadgaar JWT. Partners manage leads via /loan-applications.',
     language: 'bash',
     getCode() {
@@ -462,7 +462,7 @@ export const CODE_EXAMPLES = [
     id: 'update-loan-application',
     category: 'loan-applications',
     title: 'Approve loan application',
-    description: 'Update status — customer receives email notification.',
+    description: 'Update status  customer receives email notification.',
     language: 'bash',
     code: `curl -s -X PATCH "${PARTNER_V1}/loan-applications/482910/status" \\
   -H "Authorization: Bearer $MADADGAAR_API_KEY" \\

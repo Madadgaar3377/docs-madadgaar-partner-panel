@@ -19,7 +19,7 @@ export default function LoanApplications() {
       <PageHero
         badge="Live"
         title="Loan applications"
-        subtitle="List, view, approve, reject, and delete customer loan requests on your plans — same leads as the partner panel loan requests."
+        subtitle="List, view, approve, reject, and delete customer loan requests on your plans  same leads as the partner panel loan requests."
       />
 
       <div className="doc-prose">
@@ -66,15 +66,15 @@ export default function LoanApplications() {
         <h2>Query parameters (list)</h2>
         <FieldTable
           rows={[
-            { field: 'page', type: 'integer', required: false, description: 'Page number — default 1.' },
-            { field: 'limit', type: 'integer', required: false, description: 'Items per page — default 20, max 100.' },
+            { field: 'page', type: 'integer', required: false, description: 'Page number  default 1.' },
+            { field: 'limit', type: 'integer', required: false, description: 'Items per page  default 20, max 100.' },
             { field: 'status', type: 'string', required: false, description: 'Filter: pending, in_progress, approved, rejected, cancelled.' },
             { field: 'planId', type: 'string', required: false, description: 'Filter to one of your loan plan IDs (6-digit).' },
           ]}
         />
 
         <h2>Customer apply (reference)</h2>
-        <p>Partners do not call this — document for your integration team and support staff:</p>
+        <p>Partners do not call this  document for your integration team and support staff:</p>
         <CodeBlock title="POST /api/applyLoan" language="json" showTest={false}>
           {`POST ${API_BASE}/applyLoan
 Authorization: Bearer <customer_jwt>

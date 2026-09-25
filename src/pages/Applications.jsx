@@ -16,7 +16,7 @@ export default function Applications() {
       <PageHero
         badge="Installments"
         title="Installment applications"
-        subtitle="List, view, approve, reject, and delete customer installment requests via API key — same leads as the partner panel Requests page. For loans, see Loan applications."
+        subtitle="List, view, approve, reject, and delete customer installment requests via API key  same leads as the partner panel Requests page. For loans, see Loan applications."
       />
 
       <div className="doc-prose">

@@ -65,7 +65,7 @@ export default function DashboardPage() {
         method="GET"
         path={`${PARTNER_V1}/dashboard`}
         scope="dashboard:read"
-        description="Partner dashboard stats — installments, loans, requests, properties."
+        description="Partner dashboard stats  installments, loans, requests, properties."
         curl={`curl -s "${PARTNER_V1}/dashboard" \\
   -H "X-API-Key: $MADADGAAR_API_KEY"`}
         test={{ method: 'GET', url: `${PARTNER_V1}/dashboard` }}

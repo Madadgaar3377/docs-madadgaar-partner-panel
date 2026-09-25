@@ -110,7 +110,7 @@ async function main() {
 
 main().catch(console.error);`}</CodeBlock>
 
-        <h2>Node.js — loans &amp; loan applications</h2>
+        <h2>Node.js  loans &amp; loan applications</h2>
         <CodeBlock
           title="sync-loans.js"
           test={{ method: 'GET', url: `${PARTNER_V1}/loans?page=1&limit=50` }}
